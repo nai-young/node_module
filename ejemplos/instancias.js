@@ -2,7 +2,7 @@
 
 // crear una función para usarla como constructor de objetos
 function Fruta (nombre) {
-  // this es el objeto que se va a crear
+  // this hace referencia al objeto que se va a crear
   this.nombre = nombre
   this.getNombre = function () {
     return this.nombre
