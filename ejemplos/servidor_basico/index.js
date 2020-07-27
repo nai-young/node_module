@@ -1,12 +1,17 @@
 // cargar libreria http
 const http = require('http')
+const Chance = require('chance')
+
+const chance = new Chance()
 
 // definir un servidor y darle un listener
 const server = http.createServer(function (request, response) {
+  const nombre = chance.name()
+
   response.writeHead(200, {
     'Content-type': 'text/html'
   })
-  response.end('Wake up, <b>Neo...</b>')
+  response.end(`Wake up, <b>${nombre} </b>...`)
 })
 
 // arrancar el servidor

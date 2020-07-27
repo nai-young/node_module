@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "chance": "^1.1.6"
+  },
   "devDependencies": {
     "eslint": "^7.5.0",
     "eslint-config-standard": "^14.1.1",
@@ -17,12 +19,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nai-young/node_basico.git"
+    "url": "git+https://github.com/nai-young/node_basic.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/nai-young/node_basico/issues"
+    "url": "https://github.com/nai-young/node_basic/issues"
   },
-  "homepage": "https://github.com/nai-young/node_basico#readme"
+  "homepage": "https://github.com/nai-young/node_basic#readme"
 }
