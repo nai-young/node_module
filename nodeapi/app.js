@@ -1,3 +1,4 @@
+/* eslint-disable semi */
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -10,6 +11,11 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+// ante cada peticion se ejecutan los siguientes middlewares
+app.use(function (req, res, next) {
+  console.log('soy un middleware')
+  next()
+})
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -25,6 +31,8 @@ app.use(function(req, res, next) {
 });
 
 // error handler
+
+// si llamamos a next pasandole algo
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
