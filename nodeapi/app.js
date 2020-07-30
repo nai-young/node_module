@@ -11,6 +11,8 @@ var app = express()
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 
+// Establecemos la variable title para todas las vistas
+app.locals.title = 'Express'
 // ante cada peticion se ejecutan los siguientes middlewares
 app.use(function (req, res, next) {
   console.log('soy un middleware')
@@ -26,14 +28,14 @@ app.use('/', require('./routes/index'))
 app.use('/users', require('./routes/users'))
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404))
 })
 
 // error handler
 
 // si llamamos a next pasandole algo
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   if (err.array) { // error de validacion
     err.status = 422
     const errInfo = err.array({ onlyFirstError: true })[0]

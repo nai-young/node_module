@@ -8,7 +8,19 @@ const { query, validationResult } = require('express-validator')
 /* GET home page. */
 // esto es un middleware
 router.get('/', function (req, res, next) {
-  res.render('index', { title: 'Express' })
+  // res.locals.title = 'Express' // variables locales de las vistas
+  const segundo = new Date().getSeconds() // segundo actual
+  res.locals.valor = '<script>alert("Inyección de código");</script>'
+  res.locals.condicion = {
+    segundo: segundo,
+    estado: segundo % 2 === 0 // devuelve true o false
+  }
+  res.locals.users = [
+    { name: 'Smith', age: 39 },
+    { name: 'Jones', age: 22 },
+    { name: 'Brown', age: 45 }
+  ]
+  res.render('index')
 })
 
 // Peticion en la ruta
@@ -33,7 +45,10 @@ router.get('/parametros/:id([0-9]+)/piso/:piso/puerta/:puerta', (req, res, next)
 // Peticion en Query String
 // http://localhost:3000/enquerystring?color=rojo&talla=L&almacen=madrid
 router.get('/enquerystring',
-  query('color').isAlpha().withMessage('debería ser texto'),
+  [ // Validaciones
+    query('color').isAlpha().withMessage('debería ser texto'),
+    query('talla').isNumeric().withMessage('debería ser numérico')
+  ],
   (req, res, next) => {
     validationResult(req).throw() // Si no valida, lanza throw
     console.log(req.query)
