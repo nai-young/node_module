@@ -1,5 +1,6 @@
 var express = require('express')
 var router = express.Router()
+var path = require('path')
 // const expressValidator = require('express-validator')
 // const query = expressValidator.query
 // const validationResult = expressValidator.validationResult
@@ -21,6 +22,37 @@ router.get('/', function (req, res, next) {
     { name: 'Brown', age: 45 }
   ]
   res.render('index')
+})
+
+// Download
+router.get('/download/:descarga', (req, res, next) => {
+  var fileName = path.join(__dirname, '../public/down/' + req.params.descarga + '.pdf')
+  res.download(fileName, req.params.descarga + '.pdf', function (err) {
+    if (err) {
+      next(err)
+    } else {
+      console.log(`File download: ${req.params.descarga}`)
+    }
+  })
+})
+
+// SendFile
+router.get('/file/:name', (req, res, next) => {
+  var options = {
+    root: path.join(__dirname, '../public/down'),
+    hearders: {
+      'x-timestamp': Date.now(),
+      'x-sent': true
+    }
+  }
+  var fileName = req.params.name
+  res.sendFile(fileName, options, function (err) {
+    if (err) {
+      next(err)
+    } else {
+      console.log(`File sent: ${fileName}`)
+    }
+  })
 })
 
 // Peticion en la ruta
