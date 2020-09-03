@@ -31,7 +31,7 @@ router.get('/download/:descarga', (req, res, next) => {
     if (err) {
       next(err)
     } else {
-      console.log(`File download: ${req.params.descarga}`)
+      console.log(`File downloaded: ${req.params.descarga}`)
     }
   })
 })
