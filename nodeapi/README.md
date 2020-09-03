@@ -16,6 +16,13 @@ npm install
 ```sh
 npm start
 ```
+
+# Run Database
+
+```sh
+./bin/mongod --dbpath ./data/db --directoryperdb
+```
+
 # Development Start
 
 ```sh
