@@ -12,9 +12,12 @@ npm install
 ```
 ## Load initial data
 
+Load database with initial data
+
 ```sh
   npm run init_db
 ```
+**Warning! This script delete database content before load**
 
 ## Usage
 

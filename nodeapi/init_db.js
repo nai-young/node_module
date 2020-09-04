@@ -1,10 +1,16 @@
 'use strict'
 
+const readLine = require('readline')
 const conn = require('./lib/connectMongoose')
 const Agente = require('./models/Agente')
 
 conn.once('open', async () => {
   try {
+    const respuesta = await askUser('¿Seguro que quieres inicializar la BD con datos iniciales? (no)')
+    if (respuesta.toLowerCase() !== 'si') {
+      console.log('Proceso abortado')
+      return process.exit(0)
+    }
     await initAgentes()
     // await initUsuarios()
     // await init...
@@ -29,4 +35,17 @@ async function initAgentes () {
     { name: 'Brown', age: 45 }
   ])
   console.log(`Se han insertado ${result.length} agentes`)
+}
+
+function askUser (pregunta) {
+  return new Promise((resolve, reject) => {
+    const rl = readLine.createInterface({
+      input: process.stdin,
+      output: process.stdout
+    })
+    rl.question(pregunta, answer => {
+      rl.close()
+      resolve(answer)
+    })
+  })
 }
