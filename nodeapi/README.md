@@ -10,6 +10,11 @@
 ```sh
 npm install
 ```
+## Load initial data
+
+```sh
+  npm run init_db
+```
 
 ## Usage
 
@@ -17,13 +22,19 @@ npm install
 npm start
 ```
 
-# Run Database
+## Run local mongodb instance for development
 
 ```sh
 ./bin/mongod --dbpath ./data/db --directoryperdb
 ```
 
-# Development Start
+## API methods
+
+### List of agents
+
+GET /api/agentes
+
+## Development Start
 
 ```sh
 npm run dev
