@@ -37,6 +37,51 @@ npm start
 
 GET /api/agentes
 
+[
+  {
+    "_id": "5f520e0f6529250532ac527f",
+    "name": "Smith",
+    "age": 30,
+    "__v": 0
+  },
+  {
+    "_id": "5f520e0f6529250532ac5280",
+    "name": "Brown",
+    "age": 45,
+    "__v": 0
+  }
+]
+
+### Retrieves one agent
+
+GET /api/agentes/<_id>
+
+{
+  "result": {
+    "_id": "5f520e0f6529250532ac5280",
+    "name": "Brown",
+    "age": 45,
+    "__v": 0
+  }
+}
+
+### Creates new agent
+
+POST /api/agentes 
+
+{ name: 'Example', age: 50 }
+
+### Update agent
+
+PUT /api/agentes/<_id>
+
+{ name: 'Example', age: 50 }
+
+### Delete agent
+
+DELETE /api/agentes/<_id>
+
+
 ## Development Start
 
 ```sh
