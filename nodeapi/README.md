@@ -31,6 +31,12 @@ npm start
 ./bin/mongod --dbpath ./data/db --directoryperdb
 ```
 
+## Development Start
+
+```sh
+npm run dev
+```
+
 ## API methods
 
 ### List of agents
@@ -79,21 +85,24 @@ POST /api/agentes
 
 { name: 'Example', age: 50 }
 
+{
+  "result": {
+      "_id": "5f536e4c6ec21f076e396419",
+      "name": "David",
+      "age": 50,
+      "__v": 0
+  }
+}
+
 ### Update agent
 
 PUT /api/agentes/<_id>
 
-{ name: 'Example', age: 50 }
+{ name: 'Example', age: 32 }
 
 ### Delete agent
 
 DELETE /api/agentes/<_id>
-
-## Development Start
-
-```sh
-npm run dev
-```
 
 ## Author
 
