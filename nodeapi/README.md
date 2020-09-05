@@ -52,6 +52,14 @@ GET /api/agentes
   }
 ]
 
+#### Example filters:
+
+* http://localhost:3000/api/agentes?name=Smith
+* http://localhost:3000/api/agentes?age=30
+* http://localhost:3000/api/agentes?limit=2
+* http://localhost:3000/api/agentes?skip=5&limit=10
+* http://localhost:3000/api/agentes?sort=age
+
 ### Retrieves one agent
 
 GET /api/agentes/<_id>
@@ -80,7 +88,6 @@ PUT /api/agentes/<_id>
 ### Delete agent
 
 DELETE /api/agentes/<_id>
-
 
 ## Development Start
 

@@ -18,10 +18,10 @@ app.engine('html', require('ejs').__express)
 // Establecemos la variable title para todas las vistas
 app.locals.title = 'Express'
 // ante cada peticion se ejecutan los siguientes middlewares
-app.use(function (req, res, next) {
+/* app.use(function (req, res, next) {
   console.log('soy un middleware')
   next()
-})
+}) */
 app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
@@ -49,12 +49,16 @@ app.use(function (err, req, res, next) {
     const errInfo = err.array({ onlyFirstError: true })[0]
     err.message = `El parámetro ${errInfo.param} ${errInfo.msg}`
   }
+  res.status(err.status || 500)
+  if (req.originalUrl.startsWith('/api/')) { // API request
+    res.json({ error: err.message })
+    return
+  }
   // set locals, only providing error in development
   res.locals.message = err.message
   res.locals.error = req.app.get('env') === 'development' ? err : {}
 
   // render the error page
-  res.status(err.status || 500)
   res.render('error')
 })
 

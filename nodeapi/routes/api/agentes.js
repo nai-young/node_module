@@ -15,7 +15,19 @@ router.get('/', async (req, res, next) => {
 
   // Con async await
   try {
-    const agentes = await Agente.find({})
+    const name = req.query.name
+    const age = req.query.age
+    const limit = parseInt(req.query.limit || 5)
+    const skip = parseInt(req.query.skip)
+    const sort = req.query.sort
+    const filter = {}
+    if (name) {
+      filter.name = name
+    }
+    if (age) {
+      filter.age = age
+    }
+    const agentes = await Agente.lista(filter, limit, skip, sort)
     res.json(agentes)
   } catch (err) {
     next(err)
