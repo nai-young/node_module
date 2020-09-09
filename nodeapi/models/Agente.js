@@ -13,11 +13,12 @@ const agenteSchema = new mongoose.Schema({
 )
 
 // método estático
-agenteSchema.statics.lista = function (filter, limit, skip, sort) { // no arrow function, modifica el this
+agenteSchema.statics.lista = function (filter, limit, skip, sort, fields) { // no arrow function, modifica el this
   const query = Agente.find(filter)
   query.limit(limit)
   query.skip(skip)
   query.sort(sort)
+  query.select(fields) // SELECT from SQL // Exclude id field: ?fields=age%20-_id
   return query.exec()
 }
 

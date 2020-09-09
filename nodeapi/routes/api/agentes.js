@@ -20,6 +20,7 @@ router.get('/', async (req, res, next) => {
     const limit = parseInt(req.query.limit || 5)
     const skip = parseInt(req.query.skip)
     const sort = req.query.sort
+    const fields = req.query.fields
     const filter = {}
     if (name) {
       filter.name = name
@@ -27,7 +28,7 @@ router.get('/', async (req, res, next) => {
     if (age) {
       filter.age = age
     }
-    const agentes = await Agente.lista(filter, limit, skip, sort)
+    const agentes = await Agente.lista(filter, limit, skip, sort, fields)
     res.json(agentes)
   } catch (err) {
     next(err)

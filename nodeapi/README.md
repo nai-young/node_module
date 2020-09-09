@@ -61,10 +61,11 @@ GET /api/agentes
 #### Example filters:
 
 * http://localhost:3000/api/agentes?name=Smith
-* http://localhost:3000/api/agentes?age=30
+* http://localhost:3000/api/agentes?name=Jones&age=30
 * http://localhost:3000/api/agentes?limit=2
 * http://localhost:3000/api/agentes?skip=5&limit=10
 * http://localhost:3000/api/agentes?sort=age
+* http://localhost:3000/api/agentes?fields=age
 
 ### Retrieves one agent
 
