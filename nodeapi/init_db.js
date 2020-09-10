@@ -1,5 +1,7 @@
 'use strict'
 
+// require('dotenv').config()
+
 const readLine = require('readline')
 const conn = require('./lib/connectMongoose')
 const Agente = require('./models/Agente')

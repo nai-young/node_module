@@ -10,8 +10,8 @@ mongoose.connection.on('error', err => {
   console.log('Error al conectar a mongodb: ', err)
   process.exit(1)
 })
-
-mongoose.connect('mongodb://localhost/cursonode', {
+const mongoUri = process.env.MONGODB_URI
+mongoose.connect(mongoUri, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }) // callback opcional, ya que hemos definido eventos anteriormente

@@ -10,6 +10,11 @@
 ```sh
 npm install
 ```
+
+## Config .env variables
+
+Copy .env.example file to .env file
+
 ## Load initial data
 
 Load database with initial data

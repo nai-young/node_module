@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-
+require('dotenv').config() // load .env file, put in process.env, load env-var in package.json
 /**
  * Module dependencies.
  */

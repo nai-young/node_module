@@ -2,14 +2,20 @@
 
 const mongoose = require('mongoose')
 
+// console.log(process.env.NODE_ENV)
+
 // crear esquema
 const agenteSchema = new mongoose.Schema({
   name: String,
   age: Number
   // phones: [String]
   // message: mongoose.Schema.Types.Mixed // puede ir cualquier tipo de dato
+},
+{
+  // { collection: agentes } // para evitar la plurización
+  // no create auto-index in production env
+  // autoIndex: process.env.NODE_ENV === 'development'
 }
-// , { collection: agentes } // para evitar la plurización
 )
 
 // método estático
