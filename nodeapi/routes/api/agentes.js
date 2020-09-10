@@ -3,7 +3,20 @@
 
 var express = require('express')
 var router = express.Router()
+const multer = require('multer')
 const Agente = require('../../models/Agente')
+
+// const upload = multer({ dest: 'uploads/' })
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'uploads/')
+  },
+  filename: function (req, file, cb) {
+    const prefix = `${file.fieldname}_${Date.now()}_${file.originalname}`
+    cb(null, prefix)
+  }
+})
+const upload = multer({ storage: storage })
 
 // GET /api/agentes
 router.get('/', async (req, res, next) => {
@@ -94,6 +107,12 @@ router.delete('/:_id', async (req, res, next) => {
   } catch (error) {
     next(error)
   }
+})
+
+router.post('/upload', upload.single('image'), (req, res, next) => {
+  // 'image' is postman key
+  console.log(req.file)
+  res.send('ok')
 })
 
 module.exports = router
